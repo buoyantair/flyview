@@ -1,11 +1,11 @@
 import dotenv from 'dotenv';
-dotenv.config();
 import { ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
+dotenv.config();
 
 ReactDOM.render(
   <StrictMode>
