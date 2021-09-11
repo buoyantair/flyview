@@ -1,4 +1,11 @@
-import { Box, Image, Badge, Link, IconButton, ButtonGroup } from '@chakra-ui/react';
+import {
+  Box,
+  Image,
+  Badge,
+  Link,
+  IconButton,
+  ButtonGroup,
+} from '@chakra-ui/react';
 import { CheckIcon, DeleteIcon, StarIcon } from '@chakra-ui/icons';
 
 function randomColorGenerator() {
@@ -27,7 +34,7 @@ function Card({ entry }) {
     );
   } else {
     imagePreview = (
-      <Box bg={randomColorGenerator()} height="200px" width="100%"></Box>
+      <Box bg={`linear-gradient(to bottom left, ${randomColorGenerator()}, ${randomColorGenerator()})`} height="200px" width="100%"></Box>
     );
   }
 
@@ -61,11 +68,11 @@ function Card({ entry }) {
           </Box>
         </Link>
         <Box p="3" pt="0">
-        <ButtonGroup size="md" isAttached variant="outline" >
-          <IconButton icon={<CheckIcon color="gray.300" />} />
-          <IconButton icon={<StarIcon color="gray.300" />} />
-          <IconButton icon={<DeleteIcon color="gray.300" />} />
-        </ButtonGroup>
+          <ButtonGroup size="md" isAttached variant="outline">
+            <IconButton icon={<CheckIcon color="gray.300" />} />
+            <IconButton icon={<StarIcon color="gray.300" />} />
+            <IconButton icon={<DeleteIcon color="gray.300" />} />
+          </ButtonGroup>
         </Box>
       </Box>
     </Box>
