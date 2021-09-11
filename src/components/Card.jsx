@@ -18,6 +18,29 @@ function randomColorGenerator() {
   return `#${randomColorArray.join('')}`;
 }
 
+const markAsRead = async (id) => {
+  const searchParams = new URLSearchParams();
+  searchParams.append('archive', 1);
+  const response = await fetch(
+    `${process.env.REACT_APP_HOST}api/entries/${id}.json`,
+    {
+      headers: {
+        Authorization: `Bearer ${process.env.REACT_APP_AUTH_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      mode: 'cors',
+      method: 'PATCH',
+      body: JSON.stringify({
+        archive: '1'
+      })
+    }
+  );
+  const result = await response.json();
+  console.log(result);
+};
+
+markAsRead('459')
+
 function Card({ entry }) {
   let imagePreview = null;
   const previewExists = entry.preview_picture !== null;
@@ -69,7 +92,10 @@ function Card({ entry }) {
         </Link>
         <Box p="3" pt="0">
           <ButtonGroup size="md" isAttached variant="outline">
-            <IconButton icon={<CheckIcon color="gray.300" />} />
+            <IconButton
+              icon={<CheckIcon color="gray.300" />}
+              onClick={() => markAsRead(entry.id)}
+            />
             <IconButton icon={<StarIcon color="gray.300" />} />
             <IconButton icon={<DeleteIcon color="gray.300" />} />
           </ButtonGroup>
